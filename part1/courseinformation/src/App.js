@@ -3,25 +3,30 @@ import Content from './components/Content';
 
 const App = () => {
   
-  const course = 'Half Stack application development'
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
   
-  const parts = {
-    part1: 'Fundamentals of React',
-    part2: 'Using props to pass data',
-    part3: 'State of a component'
-  }
-
-  const total = {
-    exercises1: 10,
-    exercises2: 7,
-    exercises3: 14
-  }
 
   return (
     <div>
-      <Header course={course}/>
-      <Content parts={parts} total={total} />
-      <p>Number of exercises {total.exercises1 + total.exercises2 + total.exercises3}</p>
+      <Header course={ course }/>
+      <Content course={ course }/>
+      <p>Number of exercises {course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises}</p>
     </div>
   )
 }

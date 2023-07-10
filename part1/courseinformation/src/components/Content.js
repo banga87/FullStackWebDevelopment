@@ -1,14 +1,14 @@
 import Part from "./Part";
 
-const Content = (props) => {
+const Content = ({ course }) => {
 
-  console.log('PART 1', props.parts.part1);
+  console.log('CONTENT', course.parts )
 
   return (
     <div>
-      <Part part={props.parts.part1} total={props.total.exercises1}/>
-      <Part part={props.parts.part2} total={props.total.exercises2}/>
-      <Part part={props.parts.part3} total={props.total.exercises3}/>
+      { course.parts.map((part, index) => {
+        return <Part key={ index } part={ part } />
+      })}
     </div>
   )
 }
