@@ -1,7 +1,11 @@
-const App = () => (
-  <div>
-    <p>Hello world</p>
-  </div>
-)
+const App = () => {
+  const friends = ['Peter', 'Maya']
+
+  return (
+    <div>
+      <p>{friends}</p>
+    </div>
+  )
+}
 
 export default App
