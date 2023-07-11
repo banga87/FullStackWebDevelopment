@@ -1,34 +1,39 @@
-import Header from './components/Header';
-import Content from './components/Content';
+import { useState } from 'react';
+
+
+const Display = ({ counter }) => ( <div>{counter}</div> )
+
+
+const Button = ({ text, handleClick }) => ( <button onClick={handleClick}>{text}</button> )
+
 
 const App = () => {
-  
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
+  const [ counter, setCounter ] = useState(0)
+  console.log('rendering with counter value', counter)
+
+  const increaseByOne = () => {
+    console.log('increase, value before', counter)
+    setCounter(counter + 1)
   }
-  
+
+  const decreaseByOne = () => {
+    console.log('decreasing, value before', counter)
+    setCounter(counter - 1)
+  }
+
+  const setToZero = () => {
+    console.log('resetting to zero, value before', counter)
+    setCounter(0)
+  }
 
   return (
     <div>
-      <Header course={ course }/>
-      <Content course={ course }/>
-      <p>Number of exercises {course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises}</p>
+      <Display counter={counter} />
+      <Button text={'plus'} handleClick={ increaseByOne } />
+      <Button text={'minus'} handleClick={ decreaseByOne } />
+      <Button text={'zero'} handleClick={ setToZero } />
     </div>
   )
 }
 
-export default App
+export default App;
