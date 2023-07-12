@@ -36,9 +36,9 @@ const App = () => {
   return (
     <div>
       {value}
-      <Button handleClick={setToValue(1000)} text='thousand' />
-      <Button handleClick={setToValue(0)} text="zero" />
-      <Button handleClick={setToValue(value + 1)} text={'increment'} />
+      <Button handleClick={ setToValue(1000) } text='thousand' />
+      <Button handleClick={ setToValue(0) } text="zero" />
+      <Button handleClick={ setToValue(value + 1) } text={'increment'} />
     </div>
   )
 }
