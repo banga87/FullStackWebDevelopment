@@ -9,7 +9,7 @@ const People = ({ persons, filter }) => {
   return (
     <div>
       {personsToShow.map(person => 
-        <Person person={ person } />
+        <Person key={ person.key } person={ person } />
       )}
     </div>
   )
