@@ -1,3 +1,6 @@
+import axios from "axios"
+import personService from "../services/personService"
+
 const PersonForm = ({ 
   persons,
   setPersons,
@@ -26,9 +29,13 @@ const PersonForm = ({
       setNewName('')
     } else {
       const nameObject = { name: newName, number: newNumber }
-      setPersons(persons.concat(nameObject))
-      setNewName('')
-      setNewNumber('')
+      personService.create(nameObject)
+        .then(newPerson => {
+          setPersons(persons.concat(newPerson))
+          setNewName('')
+          setNewNumber('')
+        })
+      // setPersons(persons.concat(nameObject))
     }
   }
 
