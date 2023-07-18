@@ -1,8 +1,25 @@
-const Person = ({ person, key }) => {
+import personService from '../services/personService'
+
+
+const Person = ({ person, persons, setPersons }) => {
+
+  const deletePerson = (event) => {
+    event.preventDefault()
+    if (window.confirm(`Delete ${person.name} ?`)) {
+      personService.deleteObject(person.id)
+        .then(setPersons(
+          persons.filter(p => p.id !== person.id)
+          )
+        )
+    }
+  }
+
   return (
-    <div>
-      <p key={ key }>{person.name} {person.number}</p>
-    </div>
+
+    <>
+      <p>{person.name} {person.number}</p>
+      <button onClick={deletePerson}>delete</button>
+    </>
   )
 }
 

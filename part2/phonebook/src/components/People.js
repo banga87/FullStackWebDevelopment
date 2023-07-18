@@ -1,6 +1,6 @@
 import Person from "./Person";
 
-const People = ({ persons, filter }) => {
+const People = ({ persons, filter, setPersons }) => {
 
   const personsToShow = filter === ''
     ? persons
@@ -9,7 +9,12 @@ const People = ({ persons, filter }) => {
   return (
     <div>
       {personsToShow.map(person => 
-        <Person key={ person.key } person={ person } />
+        <Person
+          key={ person.id }
+          person={ person }
+          persons={ persons }
+          setPersons={ setPersons }
+        />
       )}
     </div>
   )
