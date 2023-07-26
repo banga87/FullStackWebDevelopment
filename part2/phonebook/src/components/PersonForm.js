@@ -22,11 +22,23 @@ const PersonForm = ({
     event.preventDefault()
     console.log('button clicked', event.target)
 
-    const nameExists = persons.some(person => person.name.toLowerCase() === newName.toLowerCase())
+    const personExists = persons.find(person => person.name.toLowerCase() === newName.toLowerCase())
 
-    if (nameExists) {
-      alert(`${newName} is already in the phonebook`)
-      setNewName('')
+    if (personExists) {
+        const confirmUpdate = window.confirm(`${newName} already exists in the Phonebook. Replace the old number with the new one?`)
+
+        if (confirmUpdate) {
+          const updatedPerson = {...personExists, number: newNumber}
+          personService.update(updatedPerson.id, updatedPerson)
+            .then(returnedPerson => {
+              setPersons(persons.map(person => person.id === returnedPerson.id ? returnedPerson : person))
+              setNewName('')
+              setNewNumber('')
+            })
+        } else {
+          setNewName('')
+          setNewNumber('')
+        }
     } else {
       const nameObject = { name: newName, number: newNumber }
       personService.create(nameObject)
@@ -35,7 +47,6 @@ const PersonForm = ({
           setNewName('')
           setNewNumber('')
         })
-      // setPersons(persons.concat(nameObject))
     }
   }
 
