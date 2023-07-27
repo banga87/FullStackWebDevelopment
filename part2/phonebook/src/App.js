@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react'
+import axios from 'axios'
+import Filter from './components/Filter'
+import Notification from './components/Notification'
 import People from './components/People'
 import PersonForm from './components/PersonForm'
-import Filter from './components/Filter'
-import axios from 'axios'
 import personService from './services/personService'
+import { useEffect, useState } from 'react'
 
 const App = () => {
-  const [persons, setPersons] = useState([]) 
-  const [newName, setNewName] = useState('')
-  const [newNumber, setNewNumber] = useState('')
-  const [filter, setFilter] = useState('')
+  const [persons, setPersons] = useState([]) ;
+  const [newName, setNewName] = useState('');
+  const [newNumber, setNewNumber] = useState('');
+  const [filter, setFilter] = useState('');
+  const [confirmationMessage, setConfirmationMessage] = useState(null);
 
   
   // GET ALL PERSONS
@@ -26,6 +28,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={confirmationMessage} />
       <Filter filter={filter} setFilter={setFilter} />
 
       <h2>Add a new person</h2>
@@ -36,6 +39,7 @@ const App = () => {
         setNewName={ setNewName }
         newName={ newName }
         newNumber={ newNumber }
+        setConfirmationMessage={ setConfirmationMessage }
       />
       
       <h2>Numbers</h2>
