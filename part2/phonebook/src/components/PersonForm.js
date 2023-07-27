@@ -8,7 +8,7 @@ const PersonForm = ({
   newName,
   setNewNumber,
   newNumber,
-  setConfirmationMessage
+  setMessage
 }) => {
 
   const handleNumberChange = (event) => {
@@ -44,14 +44,14 @@ const PersonForm = ({
       const nameObject = { name: newName, number: newNumber }
       personService.create(nameObject)
         .then(newPerson => {
-          setConfirmationMessage(newName)
+          setMessage({message: `${newName} was successfully added`, type: 'success'})
           setPersons(persons.concat(newPerson))
           setNewName('')
           setNewNumber('')
         })
         .then(
           setTimeout(() => {
-            setConfirmationMessage(null)
+            setMessage({message: null, type: null})
           }, 5000)
         )
     }

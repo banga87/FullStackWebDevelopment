@@ -1,6 +1,6 @@
 import Person from "./Person";
 
-const People = ({ persons, filter, setPersons }) => {
+const People = ({ persons, filter, setPersons, setMessage }) => {
 
   const personsToShow = filter === ''
     ? persons
@@ -14,6 +14,7 @@ const People = ({ persons, filter, setPersons }) => {
           person={ person }
           persons={ persons }
           setPersons={ setPersons }
+          setMessage={ setMessage }
         />
       )}
     </div>

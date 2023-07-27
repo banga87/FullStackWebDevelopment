@@ -11,7 +11,7 @@ const App = () => {
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [filter, setFilter] = useState('');
-  const [confirmationMessage, setConfirmationMessage] = useState(null);
+  const [message, setMessage] = useState({ message: null, type: null });
 
   
   // GET ALL PERSONS
@@ -28,18 +28,18 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={confirmationMessage} />
-      <Filter filter={filter} setFilter={setFilter} />
+      <Notification message={ message.message } type={ message.type } />
+      <Filter filter={ filter } setFilter={ setFilter } />
 
       <h2>Add a new person</h2>
       <PersonForm 
         persons={ persons }
         setPersons={ setPersons }
-        setNewNumber={ setNewNumber }
-        setNewName={ setNewName }
         newName={ newName }
+        setNewName={ setNewName }
         newNumber={ newNumber }
-        setConfirmationMessage={ setConfirmationMessage }
+        setNewNumber={ setNewNumber }
+        setMessage={ setMessage }
       />
       
       <h2>Numbers</h2>
@@ -47,6 +47,7 @@ const App = () => {
         persons={ persons }
         setPersons={ setPersons } 
         filter={ filter }
+        setMessage={ setMessage }
       />
     </div>
   )
