@@ -12,8 +12,8 @@ const Countries = ({ countries }) => {
         )
     } else if (numCountries > 1) {
         return (
-            countries.map(country => {
-                return <Country country={country} type={"basic"} />
+            countries.map((country, i) => {
+                return <Country key={i} country={country} type={"basic"} />
             })
         )
     } else if (numCountries === 1) {
