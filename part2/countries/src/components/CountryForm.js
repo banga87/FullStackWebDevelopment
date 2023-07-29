@@ -1,3 +1,5 @@
+import '../styles/CountryForm.css'
+
 const CountryForm = ({ setCountrySearch }) => {
 
     const handleChange = (event) => {
@@ -6,8 +8,8 @@ const CountryForm = ({ setCountrySearch }) => {
     }
 
     return (
-        <div>
-            find countries
+        <div className="container">
+            <p className="header">find countries</p>
             <form>
                 <div>
                     <input onChange={ handleChange }></input>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../styles/Country.css';
 
 const Country = ({ country, type }) => {
 
@@ -10,7 +11,7 @@ const Country = ({ country, type }) => {
         )
     } else if (type === 'advanced') {
         return (
-            <div>
+            <div className="advanced">
                 <h3>{country.name.common}</h3>
                 <p>Capital: {country.capital[0]}</p>
                 <p>Area: {country.area}</p>

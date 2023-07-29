@@ -1,0 +1,30 @@
+.basic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+.basic p {
+    margin-right: 10px;
+}
+
+.basic button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.basic button:hover {
+    background-color: #0056b3;
+}
+
+.basic button:active {
+    background-color: #004085;
+}
+  
