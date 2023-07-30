@@ -1,4 +1,5 @@
-import Country from "./Country";
+import AdvancedCountry from "./AdvancedCountry";
+import BasicCountry from "./BasicCountry";
 
 const Countries = ({ countries }) => {
 
@@ -13,12 +14,12 @@ const Countries = ({ countries }) => {
     } else if (numCountries > 1) {
         return (
             countries.map((country, i) => {
-                return <Country key={i} country={country} type={"basic"} />
+                return <BasicCountry key={ i } country={ country } />
             })
         )
     } else if (numCountries === 1) {
         return (
-            <Country country={countries[0]} type={"advanced"} />
+            <AdvancedCountry country={countries[0]}/>
         )
     }
 
