@@ -1,3 +1,4 @@
+import WeatherData from "./WeatherData";
 import { useState } from "react";
 import '../styles/Country.css';
 
@@ -5,7 +6,7 @@ const AdvancedCountry = ({ country }) => {
 
     return (
         <div className="advanced">
-            <h3>{country.name.common}</h3>
+            <h2>{country.name.common}</h2>
             <p>Capital: {country.capital[0]}</p>
             <p>Area: {country.area}</p>
             <h4>Languages</h4>
@@ -15,6 +16,7 @@ const AdvancedCountry = ({ country }) => {
                 })}
             </p>
             <img src={country.flags.png} alt={country.flags.alt}/>
+            <WeatherData country={ country } />
         </div>
     )
 }

@@ -1,2 +1,33 @@
 import axios from "axios";
 
+const apiKey = "8e2d67809b938ff8d396c4db3d44298f";
+
+const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
+
+const getWeather = async (lat, lon) => {
+    try {
+        const response = await axios.get(baseUrl, {
+            params: {
+                lat: lat,
+                lon: lon,
+                appid: apiKey,
+                units: 'metric'
+            }
+        });
+        console.log('Weather retrieved for:', response.data.name)
+        return response.data;
+    } catch (error) {
+        console.log('Error retrieving weather data:', error)
+        throw error;
+    }
+}
+
+// const getIcon = async (iconId) => {
+//     try {
+//         const response = await axios.get()
+//     }
+// }
+
+export default {
+    getWeather
+}
