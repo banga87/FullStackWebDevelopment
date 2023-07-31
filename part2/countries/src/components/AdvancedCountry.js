@@ -15,7 +15,7 @@ const AdvancedCountry = ({ country }) => {
                     return <li key={i}>{language}</li>
                 })}
             </p>
-            <img src={country.flags.png} alt={country.flags.alt}/>
+            <img className="country-flag" src={country.flags.png} alt={country.flags.alt}/>
             <WeatherData country={ country } />
         </div>
     )
