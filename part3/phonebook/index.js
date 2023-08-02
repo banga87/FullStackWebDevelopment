@@ -6,8 +6,20 @@ app.use(express.json())
 
 const root = '/api/persons'
 
+//PHONEBOOK INFO
+app.get(`/info`, (request, response) => {
+    const phonebookSize = persons.length;
+    const date = new Date()
+    response.send(
+        `
+            <p>Phonebook has info for ${phonebookSize} people</p>
+            <p>${date}</p>
+        `
+    )
+})
+
 // GET ALL
-app.get('/api/persons', (request, response) => {
+app.get(root, (request, response) => {
     response.json(persons)
 })
 
