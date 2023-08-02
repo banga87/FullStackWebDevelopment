@@ -1,0 +1,2 @@
+const persons = require('./data')
+
