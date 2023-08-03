@@ -7,24 +7,24 @@ const root = '/api/persons'
 
 let persons = [
     { 
-      "id": 1,
-      "name": "Arto Hellas", 
-      "number": "040-123456"
+      id: 1,
+      name: "Arto Hellas", 
+      number: "040-123456"
     },
     { 
-      "id": 2,
-      "name": "Ada Lovelace", 
-      "number": "39-44-5323523"
+      id: 2,
+      name: "Ada Lovelace", 
+      number: "39-44-5323523"
     },
     { 
-      "id": 3,
-      "name": "Dan Abramov", 
-      "number": "12-43-234345"
+      id: 3,
+      name: "Dan Abramov", 
+      number: "12-43-234345"
     },
     { 
-      "id": 4,
-      "name": "Mary Poppendieck", 
-      "number": "39-23-6423122"
+      id: 4,
+      name: "Mary Poppendieck", 
+      number: "39-23-6423122"
     }
 ]
 
@@ -58,6 +58,28 @@ app.get(`${root}/:id`, (request, response) => {
 })
 
 // CREATE A PERSON
+app.post(root, (request, response) => {
+    const ids = persons.map(n => n.id)
+    let id = null;
+    while (true) {
+        const newId = Math.floor(Math.random() * 90000) + 10000;
+
+        if (!ids.includes(newId)) {
+            id = newId;
+            break;
+        }
+    }
+
+    const body = request.body
+    const person = {
+        name: body.name,
+        number: body.number,
+        id: id
+    }
+
+    persons = persons.concat(person)
+    response.json(person)
+})
 
 // DELETE A PERSON
 app.delete(`${root}/:id`, (request, response) => {
@@ -65,7 +87,6 @@ app.delete(`${root}/:id`, (request, response) => {
     persons = persons.filter(person => person.id !== id)
 
     response.status(204).end()
-
 })
 
 // PORT & SERVER
