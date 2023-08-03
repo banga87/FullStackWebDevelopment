@@ -59,6 +59,21 @@ app.get(`${root}/:id`, (request, response) => {
 
 // CREATE A PERSON
 app.post(root, (request, response) => {
+    const body = request.body
+    if (persons.find(person => person.name === body.name)) {
+        response.status(400).json({
+            error: "name must be unique"
+        })
+        return
+    }
+
+    if (persons.find(person => person.number === body.number)) {
+        response.status(400).json({
+            error: "number must be unique"
+        })
+        return
+    }
+
     const ids = persons.map(n => n.id)
     let id = null;
     while (true) {
@@ -70,11 +85,10 @@ app.post(root, (request, response) => {
         }
     }
 
-    const body = request.body
     const person = {
+        id: id,
         name: body.name,
         number: body.number,
-        id: id
     }
 
     persons = persons.concat(person)
